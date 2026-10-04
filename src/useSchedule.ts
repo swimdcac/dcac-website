@@ -62,7 +62,7 @@ export interface Practice {
 }
 
 export interface ScheduleDay {
-  /** Local YYYY-MM-DD, also used as the render key */
+  /** Club-time YYYY-MM-DD, also used as the render key */
   key: string
   name: string
   month: string
@@ -92,21 +92,42 @@ interface Bounds {
   label: string
 }
 
-/** Days since the most recent Sunday — weeks run Sunday to Saturday. */
-function sinceSunday(d: Date) {
-  return d.getDay()
+/*
+ * Grid days are "civil" dates: UTC midnight standing in for a calendar day in
+ * club time, read back with getUTC*. That keeps the grid, "today" and which day
+ * a practice lands on in ET no matter what timezone the browser is in.
+ */
+const DAY_MS = 86_400_000
+
+function civil(y: number, m: number, d: number) {
+  return new Date(Date.UTC(y, m, d))
 }
 
-/** Sunday 00:00 through Saturday 23:59 of the current week. */
+function addDays(d: Date, n: number) {
+  return new Date(d.getTime() + n * DAY_MS)
+}
+
+const clubDayFmt = new Intl.DateTimeFormat('en-US', {
+  timeZone: CLUB_TZ, year: 'numeric', month: 'numeric', day: 'numeric',
+})
+
+/** The club-time calendar day an instant falls on. */
+function clubDay(instant: Date) {
+  const parts = clubDayFmt.formatToParts(instant)
+  const get = (t: string) => Number(parts.find(p => p.type === t)?.value)
+  return civil(get('year'), get('month') - 1, get('day'))
+}
+
+/** Days since the most recent Sunday — weeks run Sunday to Saturday. */
+function sinceSunday(d: Date) {
+  return d.getUTCDay()
+}
+
+/** Sunday through Saturday of the current week. */
 function weekBounds(): Bounds {
-  const now = new Date()
-  const start = new Date(now)
-  start.setDate(now.getDate() - sinceSunday(now))
-  start.setHours(0, 0, 0, 0)
-  const end = new Date(start)
-  end.setDate(start.getDate() + 6)
-  end.setHours(23, 59, 59, 999)
-  return { start, end, monthIndex: -1, label: '' }
+  const today = clubDay(new Date())
+  const start = addDays(today, -sinceSunday(today))
+  return { start, end: addDays(start, 6), monthIndex: -1, label: '' }
 }
 
 /**
@@ -115,23 +136,15 @@ function weekBounds(): Bounds {
  * That's 4–6 weeks depending on the month; the grid sizes itself to match.
  */
 function monthBounds(offset: number): Bounds {
-  const now = new Date()
-  const first = new Date(now.getFullYear(), now.getMonth() + offset, 1)
-  const last = new Date(first.getFullYear(), first.getMonth() + 1, 0)
-
-  const start = new Date(first)
-  start.setDate(first.getDate() - sinceSunday(first))
-  start.setHours(0, 0, 0, 0)
-
-  const end = new Date(last)
-  end.setDate(last.getDate() + (6 - sinceSunday(last)))
-  end.setHours(23, 59, 59, 999)
+  const today = clubDay(new Date())
+  const first = civil(today.getUTCFullYear(), today.getUTCMonth() + offset, 1)
+  const last = civil(first.getUTCFullYear(), first.getUTCMonth() + 1, 0)
 
   return {
-    start,
-    end,
-    monthIndex: first.getMonth(),
-    label: `${MONTH_FULL[first.getMonth()]} ${first.getFullYear()}`,
+    start: addDays(first, -sinceSunday(first)),
+    end: addDays(last, 6 - sinceSunday(last)),
+    monthIndex: first.getUTCMonth(),
+    label: `${MONTH_FULL[first.getUTCMonth()]} ${first.getUTCFullYear()}`,
   }
 }
 
@@ -139,18 +152,14 @@ function bounds(range: Range, offset: number) {
   return range === 'week' ? weekBounds() : monthBounds(offset)
 }
 
-/**
- * All-day events carry a bare "YYYY-MM-DD". new Date() would read that as UTC
- * midnight, which lands on the previous day in Eastern time — build it locally.
- */
+/** All-day events carry a bare "YYYY-MM-DD", which is already a civil date. */
 function parseDateOnly(s: string) {
   const [y, m, d] = s.split('-').map(Number)
-  return new Date(y, m - 1, d)
+  return civil(y, m - 1, d)
 }
 
-/** Local calendar day, not UTC — toISOString() would shift evening practices. */
 function dayKey(d: Date) {
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`
 }
 
 const timeFmt = new Intl.DateTimeFormat('en-US', {
@@ -194,22 +203,20 @@ function placeholderDays(range: Range): ScheduleDay[] {
 
 /** Every day in the range, pre-seeded with no practices, so gaps still render. */
 function emptyDays({ start, end, monthIndex }: Bounds): ScheduleDay[] {
-  const today = dayKey(new Date())
+  const today = dayKey(clubDay(new Date()))
   const days: ScheduleDay[] = []
-  const d = new Date(start)
-  while (d <= end) {
+  for (let d = start; d <= end; d = addDays(d, 1)) {
     const key = dayKey(d)
     days.push({
       key,
-      name: DAY_NAMES[d.getDay()],
-      month: MONTH_NAMES[d.getMonth()],
-      date: d.getDate(),
+      name: DAY_NAMES[d.getUTCDay()],
+      month: MONTH_NAMES[d.getUTCMonth()],
+      date: d.getUTCDate(),
       isToday: key === today,
-      inMonth: monthIndex < 0 || d.getMonth() === monthIndex,
+      inMonth: monthIndex < 0 || d.getUTCMonth() === monthIndex,
       theme: null,
       practices: [],
     })
-    d.setDate(d.getDate() + 1)
   }
   return days
 }
@@ -237,8 +244,10 @@ export function useSchedule(range: Range = 'week', monthOffset = 0) {
 
     const url = new URL(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events`)
     url.searchParams.set('key', API_KEY)
-    url.searchParams.set('timeMin', b.start.toISOString())
-    url.searchParams.set('timeMax', b.end.toISOString())
+    // Civil dates are UTC midnights, a few hours off the real ET day edges, so
+    // pad a day each side; anything outside the grid is dropped below.
+    url.searchParams.set('timeMin', addDays(b.start, -1).toISOString())
+    url.searchParams.set('timeMax', addDays(b.end, 2).toISOString())
     url.searchParams.set('singleEvents', 'true')
     url.searchParams.set('orderBy', 'startTime')
     url.searchParams.set('maxResults', '250')
@@ -260,8 +269,8 @@ export function useSchedule(range: Range = 'week', monthOffset = 0) {
           if (e.start.dateTime || !e.start.date || !e.summary?.trim()) continue
           const theme = matchTheme(e.summary)
           const from = parseDateOnly(e.start.date)
-          const to = e.end?.date ? parseDateOnly(e.end.date) : new Date(from.getTime() + 86_400_000)
-          for (let d = new Date(from); d < to; d.setDate(d.getDate() + 1)) {
+          const to = e.end?.date ? parseDateOnly(e.end.date) : addDays(from, 1)
+          for (let d = from; d < to; d = addDays(d, 1)) {
             const day = byDay.get(dayKey(d))
             if (day) day.theme = theme
           }
@@ -273,7 +282,7 @@ export function useSchedule(range: Range = 'week', monthOffset = 0) {
           const startAt = new Date(e.start.dateTime)
           // Google omits end only for malformed events; fall back to a one-hour block.
           const endAt = e.end?.dateTime ? new Date(e.end.dateTime) : new Date(startAt.getTime() + 3600_000)
-          const day = byDay.get(dayKey(startAt))
+          const day = byDay.get(dayKey(clubDay(startAt)))
           day?.practices.push({
             id: e.id,
             title: e.summary?.trim() || 'DCAC practice',

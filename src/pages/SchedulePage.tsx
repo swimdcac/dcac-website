@@ -44,7 +44,7 @@ export function SchedulePage() {
             <p className="sched-msg">
               Our calendar view is having trouble loading, so here's the schedule straight from
               Google. Still stuck? Email{' '}
-              <a href="mailto:membership@swimdcac.org">membership@swimdcac.org</a>.
+              <a href="mailto:cocaptain@swimdcac.org">cocaptain@swimdcac.org</a>.
             </p>
             <iframe
               className="embed-frame"

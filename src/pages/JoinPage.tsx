@@ -50,12 +50,12 @@ export function JoinPage() {
             <Steps>
               <Step number={1} title="Join U.S. Masters Swimming (USMS)" price="$75.00 per Calendar Year">
                 <p className="step-body">
-                  USMS is the national organizing body for all Masters swimmers in the United States. Registration with USMS is <strong>mandatory</strong> for every calendar year and serves as your liability insurance. It's required in order for you to practice with DCAC and to be eligible to compete in meets. Choose Potomac Valley as your LMSC and then DCAC as your club team. Included in your USMS membership is a calendar-year subscription to USMS's SWIMMER Magazine and The Swimmer's Ear newsletter published by our regional USMS Committee, Potomac Valley LMSC. USMS provides accident insurance to its members at team practices and at USMS-sanctioned events. <a href="#">Register online.</a>
+                  USMS is the national organizing body for all Masters swimmers in the United States. Registration with USMS is <strong>mandatory</strong> for every calendar year and serves as your liability insurance. It's required in order for you to practice with DCAC and to be eligible to compete in meets. Choose Potomac Valley as your LMSC and then DCAC as your club team. Included in your USMS membership is a calendar-year subscription to USMS's SWIMMER Magazine and The Swimmer's Ear newsletter published by our regional USMS Committee, Potomac Valley LMSC. USMS provides accident insurance to its members at team practices and at USMS-sanctioned events. <a href="https://www.usms.org/join-usms/join-or-renew">Register online.</a>
                 </p>
                 <div style={{ marginTop: '16px' }}>
                   <Callout tone="blue" compact>
                     <p>
-                      If you are new to DCAC and already USMS registered, please contact the Potomac Valley registrar to change your USMS team affiliation using <a href="#">this form</a> if you intend to compete as a member of DCAC.
+                      If you are new to DCAC and already USMS registered, please contact the Potomac Valley registrar to change your USMS team affiliation using <a href="https://www.pvmasters.org/pvxfer.pdf">this form</a> if you intend to compete as a member of DCAC.
                     </p>
                   </Callout>
                 </div>
@@ -63,7 +63,7 @@ export function JoinPage() {
 
               <Step number={2} title="Register with DCAC and Choose a Club Dues Structure">
                 <p className="step-body">
-                  Register in our Club Assistant platform: <a href="#">DCAC registration form here</a>. Note: do not use this link if you have registered for DCAC in the past — instead, email <a href="mailto:membership@swimdcac.org">membership@swimdcac.org</a> to request a link to reactivate your existing account.
+                  Register in our Club Assistant platform: <a href="https://www.clubassistant.com/club/form/usms_verify.cfm?c=1344&form_type=Online%20Registration&CFID=3090822&CFTOKEN=96390680">DCAC registration form here</a>. Note: do not use this link if you have registered for DCAC in the past; instead, email <a href="mailto:membership@swimdcac.org">membership@swimdcac.org</a> to request a link to reactivate your existing account.
                 </p>
                 <p className="step-body">
                   Once you complete the membership process, you'll be asked to choose a club dues structure. Dues are paid up front and are non-refundable. If you have questions or wish to cancel your membership, please email <a href="mailto:membership@swimdcac.org">membership@swimdcac.org</a>.

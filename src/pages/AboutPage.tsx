@@ -2,6 +2,7 @@ import { Link } from 'wouter'
 import { Callout } from '../components/Callout.tsx'
 import { PagePhoto } from '../components/PagePhoto.tsx'
 import pridePhoto from '../assets/pictures/pride_parade_2025.webp'
+import pabloPridePhoto from '../assets/pictures/pablo_pride.webp'
 import './AboutPage.css'
 
 const reasons = [
@@ -110,16 +111,6 @@ export function AboutPage() {
               <span className="accolade-label">Largest teams in the U.S.</span>
               <span className="accolade-detail">Among all United States Masters Swimming clubs</span>
             </div>
-            <div className="accolade t-purple">
-              <span className="accolade-num">Worldwide</span>
-              <span className="accolade-label">One of the largest LGBTQ teams</span>
-              <span className="accolade-detail">Primarily, but not exclusively, LGBTQ, and everyone is welcome</span>
-            </div>
-            <div className="accolade t-deep">
-              <span className="accolade-num">2</span>
-              <span className="accolade-label">National &amp; world affiliations</span>
-              <span className="accolade-detail">USMS and International Gay and Lesbian Aquatics (IGLA)</span>
-            </div>
           </div>
           <p className="section-note">
             Our membership includes first time swimmers who have never competed in swim meets or swam on a team to experienced competitive swimmers, including Olympians, FINA Masters World Record holders, individual and relay All-Americans, and USMS individual and relay Top Ten swimmers.
@@ -154,6 +145,15 @@ export function AboutPage() {
               <li>We do not tolerate harassment or discrimination based on gender identity or gender expression.</li>
             </ul>
           </div>
+
+          <PagePhoto
+            src={pabloPridePhoto}
+            alt="A swimmer wearing a floral swimsuit, pearls, and a sparkly cowboy hat inside a unicorn pool float, marches with DCAC teammates at Pride."
+            width={1500}
+            height={2000}
+            caption="IGLA+ members walking at the 2025 WorldPride parade."
+            narrow
+          />
 
           <div style={{ margin: '24px 0' }}>
             <Callout tone="purple">

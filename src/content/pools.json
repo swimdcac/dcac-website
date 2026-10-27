@@ -1,69 +1,97 @@
 [
   {
     "id": "deanwood",
+    "applePlaceId": "IBF9CD784008AEA45",
     "photoId": true,
     "name": "Deanwood Aquatic Center",
     "type": "indoor",
     "address": ["1350 49th St NE", "Washington, DC 20019"],
     "lockerRooms": { "mens": true, "womens": true, "family": true },
     "directions": "The pool is located within Deanwood Recreation Center. Street parking is available.",
-    "metro": { "station": "Deanwood", "line": "orange", "distance": "Across the street from" }
+    "metro": { "station": "Deanwood", "lines": ["orange"], "distance": "Across the street from" }
   },
   {
     "id": "dunbar",
+    "applePlaceId": "I1D7CC2328B64C52C",
     "photoId": true,
     "name": "Dunbar Aquatic Center",
     "type": "indoor",
     "address": ["101 N St NW", "Washington, DC 20001"],
     "lockerRooms": { "mens": true, "womens": true, "family": false },
     "directions": "The pool is located in Dunbar Senior High School. The pool entrance is at O St NW and 1st St NW. Look for the double glass doors next to the pickup/drop-off driveway. Street parking is available along O St NW.",
-    "metro": { "station": "NoMa-Gallaudet U", "line": "red", "distance": "4 blocks from" }
+    "metro": { "station": "NoMa-Gallaudet U", "lines": ["red"], "distance": "4 blocks from" }
   },
   {
     "id": "gallaudet",
+    "applePlaceId": "IDEED0843A9FF13B9",
     "name": "Gallaudet University Field House",
     "type": "indoor",
     "address": ["800 Florida Ave NE", "Gallaudet Field House (Lincoln Cir NE, next to the track and football field)", "Washington, DC 20002"],
     "lockerRooms": { "mens": true, "womens": true, "family": false },
     "directions": "The pool is in the basement of the Field House, accessed from the back of the building. The parking lot is behind the Field House. From the rear parking lot, go north on the sidewalk towards the football field, then down the stairs to the pool facility (look for the blue and yellow lounge chairs).",
-    "metro": { "station": "NoMa-Gallaudet U", "line": "red", "distance": "7 blocks from" }
+    "metro": { "station": "NoMa-Gallaudet U", "lines": ["red"], "distance": "7 blocks from" }
   },
   {
     "id": "takoma",
+    "applePlaceId": "IF837A5956B382C75",
     "photoId": true,
     "name": "Takoma Aquatic & Recreation Center",
     "type": "indoor",
     "address": ["300 Van Buren St NW", "Washington, DC 20012"],
     "lockerRooms": { "mens": true, "womens": true, "family": true },
     "directions": "The pool is in Takoma Recreation Center. Parking is available in the parking lot (enter near 3rd St NW and Underwood St NW). The pool entrance is on the north side of the building: from the front entrance, go downstairs and through the locker rooms to reach the pool.",
-    "metro": { "station": "Takoma", "line": "red", "distance": "4 blocks south of" }
+    "metro": { "station": "Takoma", "lines": ["red"], "distance": "4 blocks south of" }
+  },
+  {
+    "id": "wakefield",
+    "applePlaceId": "I8FAC2327D8F0B722",
+    "name": "Wakefield Aquatics Center",
+    "type": "indoor",
+    "address": ["1325 S Dinwiddie St", "Arlington, VA 22206"],
+    "lockerRooms": { "mens": true, "womens": true, "family": true },
+    "directions": "The pool is inside Wakefield High School, reached from the main parking lot. Enter through Door #18, to the right of the flagpoles."
+  },
+  {
+    "id": "washington-liberty",
+    "applePlaceId": "ICD444C205A11850F",
+    "name": "Washington-Liberty Aquatics Center",
+    "type": "indoor",
+    "address": ["1301 N Stafford St", "Arlington, VA 22201"],
+    "lockerRooms": { "mens": true, "womens": true, "family": true },
+    "directions": "The pool is inside Washington-Liberty High School. Enter through Door #7.",
+    "metro": { "station": "Ballston-MU", "lines": ["orange", "silver"], "distance": "About half a mile from" }
   },
   {
     "id": "wilson",
+    "applePlaceId": "IA7B0BF93C6ECAA9F",
     "photoId": true,
     "name": "Wilson Aquatic Center",
     "type": "indoor",
     "address": ["4551 Fort Dr NW", "Washington, DC 20016"],
     "lockerRooms": { "mens": true, "womens": true, "family": true },
     "directions": "On-street metered parking is available immediately outside the pool along Fort Dr NW.",
-    "metro": { "station": "Tenleytown-AU", "line": "red", "distance": "1 block from" }
+    "metro": { "station": "Tenleytown-AU", "lines": ["red"], "distance": "1 block from" }
   },
   {
     "id": "harry-thomas",
+    "applePlaceId": "IE2D1292F9EC3C727",
     "photoId": true,
     "name": "Harry Thomas Sr. Pool",
     "type": "outdoor",
     "address": ["1743 Lincoln Rd NE", "Washington, DC 20002"],
-    "directions": "The pool is next to Harry Thomas Recreation Center, just off North Capitol St and R St NE. Parking is available in the lot off 1st St NE.",
-    "metro": { "station": "NoMa-Gallaudet U", "line": "red", "distance": "Nearest Metro is" }
+    "lockerRooms": { "mens": true, "womens": true, "family": false },
+    "directions": "The pool is next to Harry Thomas Recreation Center, just off North Capitol St and R St NE. Street parking is available.",
+    "metro": { "station": "NoMa-Gallaudet U", "lines": ["red"], "distance": "Nearest Metro is" }
   },
   {
     "id": "oxon-run",
+    "applePlaceId": "IDD3BF2A08A91C24F",
     "photoId": true,
     "name": "Oxon Run Pool",
     "type": "outdoor",
     "address": ["501 Mississippi Ave SE", "Washington, DC 20032"],
+    "lockerRooms": { "mens": true, "womens": true, "family": false },
     "directions": "The pool is in Oxon Run Park on Mississippi Ave SE. Street parking is available.",
-    "metro": { "station": "Congress Heights", "line": "green", "distance": "Nearest Metro is" }
+    "metro": { "station": "Congress Heights", "lines": ["green"], "distance": "Nearest Metro is" }
   }
 ]

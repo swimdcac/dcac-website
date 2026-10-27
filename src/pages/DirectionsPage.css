@@ -10,10 +10,20 @@
 .pools{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .pool{background:var(--surface);border-radius:var(--radius-lg);padding:24px 26px}
 .pool-name{font-size:20px;color:var(--navy);margin-bottom:8px}
+/* DPR checks government-issued photo ID at the door of every pool it runs */
+.pool-tag{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;letter-spacing:.03em;color:var(--red-700);background:var(--red-50);border-radius:999px;padding:5px 12px 5px 10px}
+.pool-tag svg{flex:none}
 .pool-address{font-style:normal;color:var(--ink);font-size:15.5px;line-height:1.5}
 .pool-address span{display:block}
-.pool-map{display:inline-block;margin-top:8px;font-size:14.5px;font-weight:600;color:var(--blue-600)}
-.pool-map:hover{text-decoration:underline}
+/* white pills on the tinted card, so they read as buttons rather than another line of address */
+.pool-maps{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pool-map{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--blue-600);
+  background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 13px 7px 11px;
+  transition:border-color .2s,box-shadow .2s,transform .15s}
+.pool-map:hover{border-color:var(--blue-200);box-shadow:0 4px 12px rgba(4,44,83,.08);transform:translateY(-1px)}
+.pool-map svg{flex:none}
+.pool-map-out{opacity:.55;transition:opacity .2s,transform .2s}
+.pool-map:hover .pool-map-out{opacity:1;transform:translate(1px,-1px)}
 
 .pool-section{margin-top:18px}
 .pool-label{display:block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--blue-600);margin-bottom:6px}
@@ -26,10 +36,12 @@
 .pool-lockers li.no span{color:var(--muted)}
 
 .pool-metro{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
-/* WMATA line colors — orange is darkened from #ED8B00 so white text stays readable */
+/* WMATA line colors — orange (#ED8B00) and silver (#A2A4A1) are darkened so white text stays readable */
 .metro-line{font-size:11.5px;font-weight:700;letter-spacing:.04em;color:#fff;border-radius:999px;padding:3px 10px}
 .metro-red{background:#BF0D3E}
 .metro-orange{background:#B45F00}
+.metro-green{background:#007A3D}
+.metro-silver{background:#6E7271}
 
 @media(max-width:760px){
   .pools{grid-template-columns:1fr}

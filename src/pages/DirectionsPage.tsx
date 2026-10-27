@@ -1,6 +1,10 @@
 import { Link } from 'wouter'
 import pools from '../content/pools.json'
 import './DirectionsPage.css'
+import { Icon } from '../components/Icon.tsx'
+import idCardSvg from '../assets/icons/id-card.svg?raw'
+import mapPinSvg from '../assets/icons/map-pin.svg?raw'
+import arrowUpRightSvg from '../assets/icons/arrow-up-right.svg?raw'
 
 type Pool = (typeof pools)[number]
 
@@ -10,6 +14,17 @@ const outdoor = pools.filter(p => p.type === 'outdoor')
 /** Google Maps search for the pool itself — the name finds the right entrance better than the bare address. */
 const mapsUrl = (p: Pool) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${p.name}, ${p.address.join(', ')}`)}`
+
+/**
+ * Opens Apple's own listing for the pool by its place ID (Share → Copy Link in
+ * Apple Maps). Versions of Maps that predate place IDs ignore it and look up the
+ * address instead — street and city only, since a middle line (Gallaudet's) is a
+ * description it can't geocode.
+ */
+const appleMapsUrl = (p: Pool) => {
+  const address = `${p.address[0]}, ${p.address[p.address.length - 1]}`
+  return `https://maps.apple.com/place?place-id=${p.applePlaceId}&address=${encodeURIComponent(address)}&name=${encodeURIComponent(p.name)}`
+}
 
 const LOCKER_ROOMS = [
   { key: 'mens', label: "Men's" },
@@ -24,9 +39,16 @@ function PoolCard({ pool }: { pool: Pool }) {
       <address className="pool-address">
         {pool.address.map(line => <span key={line}>{line}</span>)}
       </address>
-      <a className="pool-map" href={mapsUrl(pool)} target="_blank" rel="noopener noreferrer">
-        Open in Google Maps →
-      </a>
+      <div className="pool-maps">
+        {[{ app: 'Google Maps', href: mapsUrl(pool) }, { app: 'Apple Maps', href: appleMapsUrl(pool) }].map(({ app, href }) => (
+          <a key={app} className="pool-map" href={href} target="_blank" rel="noopener noreferrer"
+            aria-label={`Open ${pool.name} in ${app} (opens in a new tab)`}>
+            <Icon svg={mapPinSvg} />
+            {app}
+            <Icon svg={arrowUpRightSvg} className="pool-map-out" />
+          </a>
+        ))}
+      </div>
 
       {'lockerRooms' in pool && pool.lockerRooms && (
         <div className="pool-section">
@@ -45,6 +67,15 @@ function PoolCard({ pool }: { pool: Pool }) {
         </div>
       )}
 
+      {'photoId' in pool && pool.photoId && (
+        <div className="pool-section">
+          <span className="pool-tag">
+            <Icon svg={idCardSvg} />
+            Photo ID required
+          </span>
+        </div>
+      )}
+
       {'directions' in pool && pool.directions && (
         <div className="pool-section">
           <span className="pool-label">Getting in &amp; parking</span>
@@ -56,9 +87,11 @@ function PoolCard({ pool }: { pool: Pool }) {
         <div className="pool-section">
           <span className="pool-label">Metro</span>
           <p className="pool-metro">
-            <span className={`metro-line metro-${pool.metro.line}`}>
-              {pool.metro.line[0].toUpperCase() + pool.metro.line.slice(1)} Line
-            </span>
+            {pool.metro.lines.map(line => (
+              <span key={line} className={`metro-line metro-${line}`}>
+                {line[0].toUpperCase() + line.slice(1)} Line
+              </span>
+            ))}
             {pool.metro.distance} {pool.metro.station} station
           </p>
         </div>
@@ -83,17 +116,6 @@ export function DirectionsPage() {
         <p className="section-body pools-intro">
           Check the <Link href="/schedule">practice calendar</Link> to see which pool we're at each day.
         </p>
-
-        <nav className="pools-jump" aria-label="Jump to a pool">
-          {[{ label: 'Indoor', list: indoor }, { label: 'Outdoor', list: outdoor }].map(({ label, list }) => (
-            <div className="pools-jump-group" key={label}>
-              <span className="pool-label">{label}</span>
-              <div className="chips">
-                {list.map(p => <a key={p.id} className="chip b" href={`#${p.id}`}>{p.name}</a>)}
-              </div>
-            </div>
-          ))}
-        </nav>
 
         <section className="meets-section">
           <h2 className="section-title">Indoor pools</h2>

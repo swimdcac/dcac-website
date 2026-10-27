@@ -1,6 +1,7 @@
 [
   {
     "id": "deanwood",
+    "photoId": true,
     "name": "Deanwood Aquatic Center",
     "type": "indoor",
     "address": ["1350 49th St NE", "Washington, DC 20019"],
@@ -10,6 +11,7 @@
   },
   {
     "id": "dunbar",
+    "photoId": true,
     "name": "Dunbar Aquatic Center",
     "type": "indoor",
     "address": ["101 N St NW", "Washington, DC 20001"],
@@ -28,6 +30,7 @@
   },
   {
     "id": "takoma",
+    "photoId": true,
     "name": "Takoma Aquatic & Recreation Center",
     "type": "indoor",
     "address": ["300 Van Buren St NW", "Washington, DC 20012"],
@@ -37,6 +40,7 @@
   },
   {
     "id": "wilson",
+    "photoId": true,
     "name": "Wilson Aquatic Center",
     "type": "indoor",
     "address": ["4551 Fort Dr NW", "Washington, DC 20016"],
@@ -46,14 +50,20 @@
   },
   {
     "id": "harry-thomas",
+    "photoId": true,
     "name": "Harry Thomas Sr. Pool",
     "type": "outdoor",
-    "address": ["1743 Lincoln Rd NE", "Washington, DC 20002"]
+    "address": ["1743 Lincoln Rd NE", "Washington, DC 20002"],
+    "directions": "The pool is next to Harry Thomas Recreation Center, just off North Capitol St and R St NE. Parking is available in the lot off 1st St NE.",
+    "metro": { "station": "NoMa-Gallaudet U", "line": "red", "distance": "Nearest Metro is" }
   },
   {
     "id": "oxon-run",
+    "photoId": true,
     "name": "Oxon Run Pool",
     "type": "outdoor",
-    "address": ["501 Mississippi Ave SE", "Washington, DC 20032"]
+    "address": ["501 Mississippi Ave SE", "Washington, DC 20032"],
+    "directions": "The pool is in Oxon Run Park on Mississippi Ave SE. Street parking is available.",
+    "metro": { "station": "Congress Heights", "line": "green", "distance": "Nearest Metro is" }
   }
 ]

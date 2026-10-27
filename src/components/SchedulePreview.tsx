@@ -2,6 +2,8 @@ import { Link } from 'wouter'
 import { useSchedule } from '../useSchedule.ts'
 import { ThemeTag } from './ThemeTag.tsx'
 import './SchedulePreview.css'
+import { Icon } from './Icon.tsx'
+import flameSvg from '../assets/icons/flame.svg?raw'
 
 export function SchedulePreview() {
   const { days, loading, error } = useSchedule()
@@ -10,9 +12,7 @@ export function SchedulePreview() {
     <div className="sched">
       <div className="sched-head">
         <span className="lbl">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M12 2c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10z" />
-          </svg>
+          <Icon svg={flameSvg} />
           This week in the pool
         </span>
         <Link href="/schedule">Full schedule →</Link>

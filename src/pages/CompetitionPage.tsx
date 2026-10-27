@@ -4,6 +4,12 @@ import { Tile } from '../components/Tile.tsx'
 import { PagePhoto } from '../components/PagePhoto.tsx'
 import meetPhoto from '../assets/pictures/craig_mallory_pablo_lauren.webp'
 import './CompetitionPage.css'
+import { Icon } from '../components/Icon.tsx'
+import medalSvg from '../assets/icons/medal.svg?raw'
+import podiumSvg from '../assets/icons/podium.svg?raw'
+import starSvg from '../assets/icons/star.svg?raw'
+import stopwatchSvg from '../assets/icons/stopwatch.svg?raw'
+import trophySvg from '../assets/icons/trophy.svg?raw'
 
 const records = [
   {
@@ -11,11 +17,7 @@ const records = [
     title: '11× IGLA+ World Champions',
     description: 'Including 2001, 2003–2005, 2008, 2011, 2013, and 2025',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M7 4h10v5a5 5 0 0 1-10 0V4z" />
-        <path d="M7 6H4v1.5A3.5 3.5 0 0 0 7.5 11M17 6h3v1.5a3.5 3.5 0 0 1-3.5 3.5" />
-        <path d="M12 14v4M9.5 21h5M10.5 18h3" />
-      </svg>
+      <Icon svg={trophySvg} />
     ),
   },
   {
@@ -23,9 +25,7 @@ const records = [
     title: '2000 USMS National Championships',
     description: "Men's Champions & Combined Runner Up",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 21v-6h5v6M9.5 21V9h5v12M15 21v-8h5v8M2.5 21h19" />
-      </svg>
+      <Icon svg={podiumSvg} />
     ),
   },
   {
@@ -33,10 +33,7 @@ const records = [
     title: 'USMS All Americans & record holders',
     description: 'Multiple DCAC swimmers',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="8.5" r="5.5" />
-        <path d="M8.5 13.2 7 21l5-2.6 5 2.6-1.5-7.8" />
-      </svg>
+      <Icon svg={medalSvg} />
     ),
   },
   {
@@ -44,10 +41,7 @@ const records = [
     title: 'IGLA World record holders',
     description: 'Multiple DCAC swimmers',
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="13.5" r="7.5" />
-        <path d="M12 10v3.5l2.5 1.5M9.5 2h5M19 5.5 20.5 7" />
-      </svg>
+      <Icon svg={stopwatchSvg} />
     ),
   },
 ]
@@ -177,9 +171,7 @@ export function CompetitionPage() {
         <div className="sched" style={{ marginBottom: '30px' }}>
           <div className="sched-head">
             <span className="lbl">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" />
-              </svg>
+              <Icon svg={starSvg} />
               Team records
             </span>
             <Link href="/records">View all records →</Link>

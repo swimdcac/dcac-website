@@ -1,5 +1,9 @@
 import { Link } from 'wouter'
 import logoWhite from '../assets/logos/dcac_logo_white.svg'
+import { Icon } from './Icon.tsx'
+import facebookSvg from '../assets/icons/facebook.svg?raw'
+import instagramSvg from '../assets/icons/instagram.svg?raw'
+import mailSvg from '../assets/icons/mail.svg?raw'
 
 const Logo = () => (
   <img className="logo" src={logoWhite} alt="" width="57" height="28" />
@@ -13,22 +17,13 @@ export function Footer() {
           <p className="lede">DC's premier Master's swim team since 1988.</p>
           <div className="social">
             <a href="https://instagram.com/swimdcac/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-              </svg>
+              <Icon svg={instagramSvg} />
             </a>
             <a href="https://facebook.com/DCAquaticsClub/" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14 9h3V5h-3c-2.2 0-4 1.8-4 4v2H7v4h3v6h4v-6h3l1-4h-4V9c0-.6.4-1 1-1z" />
-              </svg>
+              <Icon svg={facebookSvg} />
             </a>
             <a href="mailto:membership@swimdcac.org" aria-label="Email">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="5" width="18" height="14" rx="2" />
-                <path d="M3 7l9 6 9-6" />
-              </svg>
+              <Icon svg={mailSvg} />
             </a>
           </div>
         </div>

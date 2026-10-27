@@ -1,4 +1,7 @@
 import { posts } from 'virtual:instagram-feed'
+import { Icon } from './Icon.tsx'
+import gridSvg from '../assets/icons/grid.svg?raw'
+import instagramSvg from '../assets/icons/instagram.svg?raw'
 
 export function InstagramFeed() {
   if (posts.length === 0) return null
@@ -7,11 +10,7 @@ export function InstagramFeed() {
     <div className="insta">
       <div className="insta-head">
         <span className="lbl">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <rect x="3" y="3" width="18" height="18" rx="5" />
-            <circle cx="12" cy="12" r="4" />
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-          </svg>
+          <Icon svg={instagramSvg} />
           @swimdcac
         </span>
         <a href="https://instagram.com/swimdcac" target="_blank" rel="noopener noreferrer">
@@ -34,12 +33,7 @@ export function InstagramFeed() {
             )}
             {post.media_type === 'CAROUSEL_ALBUM' && (
               <span className="insta-badge" aria-hidden="true">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-                  <rect x="2" y="2" width="9" height="9" rx="1" />
-                  <rect x="13" y="2" width="9" height="9" rx="1" />
-                  <rect x="2" y="13" width="9" height="9" rx="1" />
-                  <rect x="13" y="13" width="9" height="9" rx="1" />
-                </svg>
+                <Icon svg={gridSvg} />
               </span>
             )}
           </a>

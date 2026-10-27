@@ -3,11 +3,11 @@ import { RichText } from '../components/RichText.tsx'
 import { PagePhoto } from '../components/PagePhoto.tsx'
 import faqPhoto from '../assets/pictures/faq.webp'
 import './FaqPage.css'
+import { Icon } from '../components/Icon.tsx'
+import chevronDownSvg from '../assets/icons/chevron-down.svg?raw'
 
 const Chevron = () => (
-  <svg className="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" aria-hidden="true">
-    <path d="M6 9l6 6 6-6" />
-  </svg>
+  <Icon svg={chevronDownSvg} className="faq-chevron" />
 )
 
 export function FaqPage() {

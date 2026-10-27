@@ -4,6 +4,13 @@ import { InstagramFeed } from '../components/InstagramFeed.tsx'
 import { SchedulePreview } from '../components/SchedulePreview.tsx'
 import { Tile } from '../components/Tile.tsx'
 import intrasquadPhoto from '../assets/pictures/dcac_intrasquad_meet_2026.webp'
+import { Icon } from '../components/Icon.tsx'
+import calendarSvg from '../assets/icons/calendar.svg?raw'
+import clockSvg from '../assets/icons/clock.svg?raw'
+import peopleSvg from '../assets/icons/people.svg?raw'
+import personSvg from '../assets/icons/person.svg?raw'
+import starSolidSvg from '../assets/icons/star-solid.svg?raw'
+import starsRowSvg from '../assets/icons/stars-row.svg?raw'
 
 export function HomePage() {
   const heroInnerRef = useRef<HTMLDivElement>(null)
@@ -27,15 +34,9 @@ export function HomePage() {
     <>
       <section className="hero">
         <div className="stars" aria-hidden="true">
-          <svg className="star-bob" style={{ top: '42px', right: '9%' }} width="64" height="64" viewBox="0 0 24 24">
-            <path d="M12 2 L14.9 8.6 L22 9.2 L16.5 13.9 L18.3 21 L12 17.3 L5.7 21 L7.5 13.9 L2 9.2 L9.1 8.6 Z" fill="#0C447C" />
-          </svg>
-          <svg className="star-bob b" style={{ top: '128px', right: '22%' }} width="40" height="40" viewBox="0 0 24 24">
-            <path d="M12 2 L14.9 8.6 L22 9.2 L16.5 13.9 L18.3 21 L12 17.3 L5.7 21 L7.5 13.9 L2 9.2 L9.1 8.6 Z" fill="#0C447C" />
-          </svg>
-          <svg className="star-bob c" style={{ top: '34px', right: '30%' }} width="30" height="30" viewBox="0 0 24 24">
-            <path d="M12 2 L14.9 8.6 L22 9.2 L16.5 13.9 L18.3 21 L12 17.3 L5.7 21 L7.5 13.9 L2 9.2 L9.1 8.6 Z" fill="#0C447C" />
-          </svg>
+          <Icon svg={starSolidSvg} className="star-bob" style={{ top: '42px', right: '9%' }} width="64" height="64" fill="#0C447C" />
+          <Icon svg={starSolidSvg} className="star-bob b" style={{ top: '128px', right: '22%' }} width="40" height="40" fill="#0C447C" />
+          <Icon svg={starSolidSvg} className="star-bob c" style={{ top: '34px', right: '30%' }} width="30" height="30" fill="#0C447C" />
         </div>
         <div className="wrap">
           <div ref={heroInnerRef} className="hero-inner">
@@ -59,11 +60,7 @@ export function HomePage() {
       <div className="wrap page-main">
         <Link className="feature" href="/trial">
           <div className="ftext">
-            <svg className="fstars" width="78" height="34" viewBox="0 0 80 34" aria-hidden="true">
-              <path d="M12 2 L14.9 8.6 L22 9.2 L16.5 13.9 L18.3 21 L12 17.3 L5.7 21 L7.5 13.9 L2 9.2 L9.1 8.6 Z" transform="translate(2,4) scale(.8)" fill="#C8102E" />
-              <path d="M12 2 L14.9 8.6 L22 9.2 L16.5 13.9 L18.3 21 L12 17.3 L5.7 21 L7.5 13.9 L2 9.2 L9.1 8.6 Z" transform="translate(28,4) scale(.8)" fill="#C8102E" />
-              <path d="M12 2 L14.9 8.6 L22 9.2 L16.5 13.9 L18.3 21 L12 17.3 L5.7 21 L7.5 13.9 L2 9.2 L9.1 8.6 Z" transform="translate(54,4) scale(.8)" fill="#C8102E" />
-            </svg>
+            <Icon svg={starsRowSvg} className="fstars" />
             <p className="tag">New to the team?</p>
             <h2>Your first two swims are free!</h2>
             <p>Just bring a suit, goggles, and yourself. See you in the pool!</p>
@@ -84,10 +81,7 @@ export function HomePage() {
             title="Practice times"
             description="When & where we swim"
             icon={
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v5l3 2" />
-              </svg>
+              <Icon svg={clockSvg} />
             }
           />
           <Tile
@@ -96,10 +90,7 @@ export function HomePage() {
             title="Competition"
             description="Race days & socials"
             icon={
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <rect x="3" y="4" width="18" height="17" rx="2" />
-                <path d="M3 9h18M8 2v4M16 2v4" />
-              </svg>
+              <Icon svg={calendarSvg} />
             }
           />
           <Tile
@@ -109,11 +100,7 @@ export function HomePage() {
             title="Who we are"
             description="Our story & community"
             icon={
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <circle cx="9" cy="8" r="3" />
-                <circle cx="17" cy="9" r="2.5" />
-                <path d="M3 20c0-3 2.7-5 6-5s6 2 6 5M16 14c2.5 0 5 1.5 5 5" />
-              </svg>
+              <Icon svg={peopleSvg} />
             }
           />
           <Tile
@@ -122,10 +109,7 @@ export function HomePage() {
             title="Member login"
             description="Dues & member info"
             icon={
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <circle cx="12" cy="8" r="4" />
-                <path d="M5 21c0-4 3-7 7-7s7 3 7 7" />
-              </svg>
+              <Icon svg={personSvg} />
             }
           />
         </div>

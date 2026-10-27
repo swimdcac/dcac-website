@@ -6,6 +6,8 @@ import {
   type Course, type RecordKind, type AgeGroup, type RecordLine, type Swim,
 } from '../useRecords.ts'
 import './RecordsPage.css'
+import { Icon } from '../components/Icon.tsx'
+import searchSvg from '../assets/icons/search.svg?raw'
 
 const KINDS: { id: RecordKind; label: string }[] = [
   { id: 'individual', label: 'Individual' },
@@ -131,10 +133,7 @@ export function RecordsPage() {
           </div>
 
           <div className="rec-search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="7" />
-              <path d="m16.5 16.5 4 4" />
-            </svg>
+            <Icon svg={searchSvg} />
             <input
               type="search"
               value={query}

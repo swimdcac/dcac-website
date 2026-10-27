@@ -1,6 +1,11 @@
 import { useLocation } from 'wouter'
 import { Tile } from '../components/Tile.tsx'
 import './NotFoundPage.css'
+import { Icon } from '../components/Icon.tsx'
+import clockSvg from '../assets/icons/clock.svg?raw'
+import helpCircleSvg from '../assets/icons/help-circle.svg?raw'
+import homeSvg from '../assets/icons/home.svg?raw'
+import swimmerSvg from '../assets/icons/swimmer.svg?raw'
 
 /* Anything the router doesn't recognize lands here. On GitHub Pages the
    request itself is served by 404.html (a copy of the app), so the browser
@@ -31,10 +36,7 @@ export function NotFoundPage() {
             title="Home"
             description="Start from the top"
             icon={
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 11l9-7 9 7" />
-                <path d="M5 10v10h14V10" />
-              </svg>
+              <Icon svg={homeSvg} />
             }
           />
           <Tile
@@ -43,10 +45,7 @@ export function NotFoundPage() {
             title="Practice times"
             description="When & where we swim"
             icon={
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7v5l3 2" />
-              </svg>
+              <Icon svg={clockSvg} />
             }
           />
           <Tile
@@ -55,12 +54,7 @@ export function NotFoundPage() {
             title="Try a practice"
             description="Your first two swims are free"
             icon={
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M2 16c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5" />
-                <path d="M2 20c2 0 2-1.5 4-1.5s2 1.5 4 1.5 2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5" />
-                <circle cx="15" cy="7" r="2" />
-                <path d="M4 12l5-4 3 3" />
-              </svg>
+              <Icon svg={swimmerSvg} />
             }
           />
           <Tile
@@ -69,11 +63,7 @@ export function NotFoundPage() {
             title="FAQ"
             description="Answers for new swimmers"
             icon={
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M9.5 9.5a2.5 2.5 0 0 1 4.8 1c0 1.7-2.3 2-2.3 3.5" />
-                <path d="M12 17.5h.01" />
-              </svg>
+              <Icon svg={helpCircleSvg} />
             }
           />
         </div>

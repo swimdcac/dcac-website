@@ -1,6 +1,8 @@
 import type { ComponentChildren } from 'preact'
 import { Link } from 'wouter'
 import './Tile.css'
+import { Icon } from './Icon.tsx'
+import arrowRightSvg from '../assets/icons/arrow-right.svg?raw'
 
 export type TileColor = 'blue' | 'red' | 'purple' | 'deep'
 
@@ -23,9 +25,7 @@ export function Tile({ color, title, description, icon, href, external, arrow = 
       <span><span className="ttl">{title}</span><br /><span className="desc">{description}</span></span>
       {arrow && (
         <span className="arr">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M5 12h14M13 6l6 6-6 6" />
-          </svg>
+          <Icon svg={arrowRightSvg} />
         </span>
       )}
     </>

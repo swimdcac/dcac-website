@@ -98,7 +98,7 @@ export function RecordsPage() {
         </div>
       </section>
 
-      <main id="main" className="wrap" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
+      <div className="wrap page-main" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
 
         <div className="rec-controls">
           <div className="rec-seg" role="group" aria-label="Course">
@@ -238,7 +238,7 @@ export function RecordsPage() {
           and this page reads from it directly. Email{' '}
           <a href="mailto:competition@swimdcac.org">competition@swimdcac.org</a> for any fixes.
         </p>
-      </main>
+      </div>
     </>
   )
 }

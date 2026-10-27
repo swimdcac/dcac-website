@@ -32,9 +32,20 @@ function TitleSync() {
   return null
 }
 
+/** Moves focus onto the new page (its #anchor, else its <h1>) so screen
+ *  readers announce it — otherwise focus stays on the link that was clicked
+ *  and nothing says the page changed. preventScroll leaves positioning to
+ *  ScrollReset and the browser. */
+function focusPage(target: HTMLElement | null) {
+  const el = target ?? document.querySelector<HTMLElement>('main h1')
+  if (!el) return
+  if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1')
+  el.focus({ preventScroll: true })
+}
+
 /** Client-side navigation keeps the old scroll position, so start each new
  *  page at the top (or at its #anchor). Back/forward is left alone so the
- *  browser can restore where you were. */
+ *  browser can restore where you were. Either way, focus moves to the new page. */
 function ScrollReset() {
   const [path] = useLocation()
   const firstRender = useRef(true)
@@ -49,11 +60,12 @@ function ScrollReset() {
   useEffect(() => {
     // the browser already handled the initial load, including any #anchor
     if (firstRender.current) { firstRender.current = false; return }
-    if (fromHistory.current) { fromHistory.current = false; return }
-    const target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)))
+    const target = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null
+    if (fromHistory.current) fromHistory.current = false
     // 'instant' overrides the smooth scroll-behavior set on <html>
-    if (target) target.scrollIntoView({ behavior: 'instant' })
+    else if (target) target.scrollIntoView({ behavior: 'instant' })
     else window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    focusPage(target)
   }, [path])
   return null
 }
@@ -65,23 +77,27 @@ export function App({ ssrPath }: { ssrPath?: string }) {
       <TitleSync />
       <ScrollReset />
       <Header />
-      <Switch>
-        <Route path="/" component={HomePage} />
-        <Route path="/competition" component={CompetitionPage} />
-        <Route path="/schedule" component={SchedulePage} />
-        <Route path="/join" component={JoinPage} />
-        <Route path="/trial" component={TrialPage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/contact" component={ContactPage} />
-        <Route path="/donate" component={DonatePage} />
-        <Route path="/faq" component={FaqPage} />
-        <Route path="/coaches" component={CoachesPage} />
-        <Route path="/records" component={RecordsPage} />
-        <Route path="/scholarships" component={ScholarshipsPage} />
-        <Route path="/directions" component={DirectionsPage} />
-        {/* no path — matches anything the routes above didn't */}
-        <Route component={NotFoundPage} />
-      </Switch>
+      {/* wraps each page's hero too, so the skip link and landmark
+          navigation land on the page's <h1> rather than past it */}
+      <main id="main">
+        <Switch>
+          <Route path="/" component={HomePage} />
+          <Route path="/competition" component={CompetitionPage} />
+          <Route path="/schedule" component={SchedulePage} />
+          <Route path="/join" component={JoinPage} />
+          <Route path="/trial" component={TrialPage} />
+          <Route path="/about" component={AboutPage} />
+          <Route path="/contact" component={ContactPage} />
+          <Route path="/donate" component={DonatePage} />
+          <Route path="/faq" component={FaqPage} />
+          <Route path="/coaches" component={CoachesPage} />
+          <Route path="/records" component={RecordsPage} />
+          <Route path="/scholarships" component={ScholarshipsPage} />
+          <Route path="/directions" component={DirectionsPage} />
+          {/* no path — matches anything the routes above didn't */}
+          <Route component={NotFoundPage} />
+        </Switch>
+      </main>
       <Footer />
     </Router>
   )

@@ -21,7 +21,7 @@ export function FaqPage() {
         </div>
       </section>
 
-      <main id="main" className="wrap" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
+      <div className="wrap page-main" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
 
         <PagePhoto
           src={faqPhoto}
@@ -50,7 +50,7 @@ export function FaqPage() {
         <p className="reach">
           Still have a question? Email <a href="mailto:membership@swimdcac.org">membership@swimdcac.org</a>.
         </p>
-      </main>
+      </div>
     </>
   )
 }

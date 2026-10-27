@@ -80,7 +80,7 @@ export function ScholarshipsPage() {
         </div>
       </section>
 
-      <main id="main" className="wrap" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
+      <div className="wrap page-main" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
 
         <section className="meets-section">
           <h2 className="section-title">DCAC scholarships</h2>
@@ -209,7 +209,7 @@ export function ScholarshipsPage() {
         <p className="reach">
           Questions about any scholarship? Email our treasurer at <Treasurer />.
         </p>
-      </main>
+      </div>
     </>
   )
 }

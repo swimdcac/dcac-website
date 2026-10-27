@@ -78,7 +78,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      <main id="main" className="wrap" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
+      <div className="wrap page-main" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
 
         <section className="meets-section">
           <h2 className="section-title">Mission</h2>
@@ -220,7 +220,7 @@ export function AboutPage() {
         <p className="reach">
           Questions about the team? Email <a href="mailto:membership@swimdcac.org">membership@swimdcac.org</a>.
         </p>
-      </main>
+      </div>
     </>
   )
 }

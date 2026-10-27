@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "preact": "^10.29.8",
-    "wouter": "^3.11.0"
+    "preact": "^11.0.2",
+    "wouter": "^3.13.0"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.6",
-    "@types/node": "^26.6.3",
-    "preact-render-to-string": "^6.7.0",
+    "@types/node": "^26.6.5",
+    "preact-render-to-string": "^6.8.1",
     "typescript": "~7.0.2",
-    "vite": "^8.3.1"
+    "vite": "^8.3.3"
   }
 }

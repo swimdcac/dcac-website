@@ -4,12 +4,15 @@
   --blue-200:#85B7EB; --blue-100:#B5D4F4; --blue-50:#E6F1FB;
   --red:#C8102E; --red-700:#A32D2D; --red-900:#791F1F; --red-50:#FCEBEB;
   --purple:#534AB7; --purple-800:#3C3489; --purple-50:#EEEDFE;
+  --teal-700:#0F6E56; --teal-50:#E1F5EE;
   --ink:#0E2238; --muted:#5B6B7C;
   --surface:#F3F7FC; --white:#fff;
   --line:rgba(4,44,83,.10);
   /* role colors — these are what dark mode swaps. --navy is the heading ink;
      --navy-bg is the brand band (hero, footer), which stays navy in both. */
   --bg:#fff; --card:#fff; --navy-bg:#042C53;
+  /* button fill — not swapped in dark mode, where --red lightens for text and white on it drops below 4.5:1 */
+  --red-fill:#C8102E;
   --radius:14px; --radius-lg:20px;
   --display:'Bricolage Grotesque',Georgia,serif;
   --body:'Hanken Grotesk',-apple-system,sans-serif;
@@ -26,6 +29,7 @@
     --blue-200:#35577D; --blue-100:#1E3A5C; --blue-50:#13263D;
     --red:#E23A52; --red-700:#F4A0A0; --red-900:#FBD0D0; --red-50:#3A1A22;
     --purple:#ABA5F0; --purple-800:#CECBF6; --purple-50:#221F46;
+    --teal-700:#5DCAA5; --teal-50:#0F2A24;
     --ink:#E3EAF2; --muted:#9AABBD;
     --surface:#112034;
     --line:rgba(181,212,244,.13);
@@ -36,7 +40,8 @@
   .hero,.page-hero,footer{--blue-200:#85B7EB;--blue-100:#B5D4F4}
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+/* scroll-padding keeps anchor targets and keyboard focus clear of the sticky header */
+html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{font-family:var(--body);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.12;letter-spacing:-.01em}
 a{color:inherit;text-decoration:none}
@@ -44,6 +49,8 @@ img,svg{display:block}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 .skip{position:absolute;left:-9999px;top:0;background:var(--navy-bg);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;z-index:200}
 .skip:focus{left:0}
+/* focus lands on these programmatically after navigation; a ring around a heading reads as a glitch */
+[tabindex="-1"]:focus{outline:none}
 
 /* pride hairline */
 .pride{display:flex;height:4px}
@@ -61,7 +68,7 @@ header{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 
 .links a{font-size:15px;color:var(--muted);font-weight:500;transition:color .2s}
 .links a:hover{color:var(--navy)}
 .btn{font-family:var(--body);font-weight:600;font-size:15px;border:none;cursor:pointer;border-radius:10px;padding:11px 20px;transition:transform .15s,box-shadow .2s,background .2s}
-.btn-red{background:var(--red);color:#fff}
+.btn-red{background:var(--red-fill);color:#fff}
 .btn-red:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(200,16,46,.28)}
 .btn-ghost{background:transparent;border:1.5px solid var(--blue-200);color:var(--blue-100)}
 .btn-ghost:hover{background:rgba(133,183,235,.14)}
@@ -88,8 +95,8 @@ header{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 
 .w3{animation:drift 26s linear infinite}
 @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-340px)}}
 
-/* main */
-main{padding:54px 0 10px}
+/* page content below the hero */
+.page-main{padding-block:54px 10px}
 /* two-column: copy left, photo bleeding to the card's right edge.
    padding lives on .ftext so the photo can reach the rounded corners */
 .feature{display:grid;grid-template-columns:1fr minmax(0,42%);min-height:240px;position:relative;overflow:hidden;background:var(--blue-50);border-radius:var(--radius-lg);margin-bottom:18px;transition:transform .16s,box-shadow .2s}
@@ -184,7 +191,7 @@ footer{margin-top:48px;background:var(--navy-bg);color:#fff}
 .accolade{border-radius:var(--radius);padding:22px 24px}
 .accolade-num{display:block;font-family:var(--display);font-size:36px;font-weight:600;line-height:1;margin-bottom:6px}
 .accolade-label{display:block;font-weight:600;font-size:16px;margin-bottom:4px}
-.accolade-detail{display:block;font-size:13px;opacity:.75}
+.accolade-detail{display:block;font-size:13px}
 .t-blue .accolade-num,.t-blue .accolade-label{color:var(--blue-800)} .t-blue .accolade-detail{color:var(--blue-600)}
 .t-red .accolade-num,.t-red .accolade-label{color:var(--red-900)} .t-red .accolade-detail{color:var(--red-700)}
 .t-purple .accolade-num,.t-purple .accolade-label{color:var(--purple-800)} .t-purple .accolade-detail{color:var(--purple)}

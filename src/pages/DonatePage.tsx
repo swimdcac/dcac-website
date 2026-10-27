@@ -11,7 +11,7 @@ export function DonatePage() {
         </div>
       </section>
 
-      <main id="main" className="wrap" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
+      <div className="wrap page-main" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
 
         <section className="meets-section">
           <p className="section-body">
@@ -30,7 +30,7 @@ export function DonatePage() {
         <p className="reach">
           For more information, please contact <a href="mailto:development@swimdcac.org">development@swimdcac.org</a>.
         </p>
-      </main>
+      </div>
     </>
   )
 }

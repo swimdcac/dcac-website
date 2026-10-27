@@ -13,7 +13,7 @@ export function CoachesPage() {
         </div>
       </section>
 
-      <main id="main" className="wrap" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
+      <div className="wrap page-main" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
 
         <section className="meets-section">
           <div className="coach-list">
@@ -36,7 +36,7 @@ export function CoachesPage() {
         <p className="reach">
           Questions for the coaching staff? Email <a href="mailto:cocaptain@swimdcac.org">cocaptain@swimdcac.org</a>.
         </p>
-      </main>
+      </div>
     </>
   )
 }

@@ -79,7 +79,7 @@ export function DirectionsPage() {
         </div>
       </section>
 
-      <main id="main" className="wrap" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
+      <div className="wrap page-main" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
         <p className="section-body pools-intro">
           Check the <Link href="/schedule">practice calendar</Link> to see which pool we're at each day.
         </p>
@@ -112,7 +112,7 @@ export function DirectionsPage() {
         <p className="reach">
           Directions out of date? Email <a href="mailto:cocaptain@swimdcac.org">cocaptain@swimdcac.org</a>.
         </p>
-      </main>
+      </div>
     </>
   )
 }

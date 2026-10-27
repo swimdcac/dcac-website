@@ -1,6 +1,6 @@
 /* program cards — anchor ids let other pages deep-link to one program */
 .sch-programs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-.sch-program{display:flex;flex-direction:column;background:var(--surface);border-radius:var(--radius-lg);padding:24px 24px 22px;scroll-margin-top:90px}
+.sch-program{display:flex;flex-direction:column;background:var(--surface);border-radius:var(--radius-lg);padding:24px 24px 22px}
 .sch-audience{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
   color:var(--blue-600);background:var(--blue-50);border-radius:999px;padding:4px 10px;margin-bottom:12px}
 .sch-program h3{font-size:20px;color:var(--navy);margin-bottom:10px}
@@ -17,7 +17,6 @@
 .sch-photos img{width:100%;height:auto;border-radius:var(--radius-lg)}
 
 /* memorial funds */
-.sch-fund{scroll-margin-top:90px}
 .sch-fund .section-body a,.reach a{color:var(--blue-600);font-weight:600}
 .sch-apply-line{margin-top:12px}
 .sch-donate{margin-top:20px}

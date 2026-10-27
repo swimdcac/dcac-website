@@ -18,7 +18,7 @@ export function ContactPage() {
         </div>
       </section>
 
-      <main id="main" className="wrap" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
+      <div className="wrap page-main" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
 
         <section className="meets-section">
           <div className="contact-details">
@@ -76,7 +76,7 @@ export function ContactPage() {
           </ul>
         </section>
 
-      </main>
+      </div>
     </>
   )
 }

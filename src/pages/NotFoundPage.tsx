@@ -22,7 +22,7 @@ export function NotFoundPage() {
         </div>
       </section>
 
-      <main id="main" className="wrap" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
+      <div className="wrap page-main" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
         <h2 className="section-title">Try one of these instead</h2>
         <div className="tiles">
           <Tile
@@ -82,7 +82,7 @@ export function NotFoundPage() {
           Followed a link from our site and ended up here? Let us know at{' '}
           <a href="mailto:publicity@swimdcac.org">publicity@swimdcac.org</a>.
         </p>
-      </main>
+      </div>
     </>
   )
 }

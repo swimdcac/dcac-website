@@ -10,7 +10,8 @@ export function HomePage() {
 
   useEffect(() => {
     const el = heroInnerRef.current
-    if (!el) return
+    // scroll-linked motion is a vestibular trigger; the CSS animations honor this too
+    if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const hero = el.closest('section') as HTMLElement | null
     function onScroll() {
       if (!el || !hero) return
@@ -42,7 +43,7 @@ export function HomePage() {
             <h1>District of Columbia Aquatics Club</h1>
             <p className="sub">Every body, every stroke, every pace. There's no waitlist - join today!</p>
             <div className="cta">
-              <Link className="btn btn-red" href="/trial" style={{ color: '#fff' }}>Come to a practice</Link>
+              <Link className="btn btn-red" href="/schedule" style={{ color: '#fff' }}>Come to a practice</Link>
               <Link className="btn btn-ghost" href="/join">How to join</Link>
             </div>
           </div>
@@ -55,7 +56,7 @@ export function HomePage() {
         </svg>
       </section>
 
-      <main id="main" className="wrap">
+      <div className="wrap page-main">
         <Link className="feature" href="/trial">
           <div className="ftext">
             <svg className="fstars" width="78" height="34" viewBox="0 0 80 34" aria-hidden="true">
@@ -134,7 +135,7 @@ export function HomePage() {
         <InstagramFeed />
 
         <p className="reach">Not sure where to start? Email <a href="mailto:membership@swimdcac.org">membership@swimdcac.org</a>.</p>
-      </main>
+      </div>
     </>
   )
 }

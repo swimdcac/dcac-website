@@ -65,7 +65,7 @@ export function CompetitionPage() {
         </div>
       </section>
 
-      <main id="main" className="wrap" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
+      <div className="wrap page-main" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
 
         <section className="meets-section">
           <h2 className="section-title">Upcoming meets</h2>
@@ -192,7 +192,7 @@ export function CompetitionPage() {
         <p className="reach">
           Questions about competition? Email <a href="mailto:competition@swimdcac.org">competition@swimdcac.org</a>.
         </p>
-      </main>
+      </div>
     </>
   )
 }

@@ -36,7 +36,7 @@ export function SchedulePage() {
         </div>
       </section>
 
-      <main id="main" className="wrap" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
+      <div className="wrap page-main" style={{ paddingTop: '48px', paddingBottom: '10px' }}>
         <SubscribeBar />
 
         {error ? (
@@ -111,7 +111,7 @@ export function SchedulePage() {
           Times or pools look wrong? Email{' '}
           <a href="mailto:cocaptain@swimdcac.org">cocaptain@swimdcac.org</a>.
         </p>
-      </main>
+      </div>
 
     </>
   )
@@ -220,6 +220,18 @@ interface DayCellProps {
   onPick: () => void
 }
 
+/** The cell's aria-label replaces everything drawn inside it, so it has to
+ *  carry what a sighted visitor reads off the cell: today, theme, and times. */
+function cellLabel(day: ScheduleDay) {
+  // placeholder cells before the schedule arrives have no date yet
+  if (!day.date) return 'Loading'
+  const date = `${day.isToday ? 'Today, ' : ''}${day.name} ${day.month} ${day.date}`
+  const n = day.practices.length
+  if (!n) return `${date}, no practices`
+  const times = day.practices.map(p => (p.location ? `${p.time} at ${p.location}` : p.time)).join('; ')
+  return `${date}, ${n} practice${n === 1 ? '' : 's'}${day.theme ? `, ${day.theme.label}` : ''}: ${times}`
+}
+
 function DayCell({ day, loading, selected, onPick }: DayCellProps) {
   const has = day.practices.length > 0
   const cls = [
@@ -236,7 +248,7 @@ function DayCell({ day, loading, selected, onPick }: DayCellProps) {
       type="button"
       onClick={onPick}
       disabled={!has}
-      aria-label={`${day.name} ${day.month} ${day.date}, ${day.practices.length} practices`}
+      aria-label={loading ? 'Loading' : cellLabel(day)}
       aria-haspopup="dialog"
     >
       <span className="cell-top">

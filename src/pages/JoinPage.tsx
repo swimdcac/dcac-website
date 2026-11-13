@@ -85,7 +85,7 @@ export function JoinPage() {
                 price="$50.00 D.C. residents · $62.50 non-residents, per calendar year"
               >
                 <p className="step-body">
-                  Cost is prorated and visible during checkout. <a href="https://dcwashingtonweb.myvscloud.com/webtrac/web/search.html?module=PM&type=Aquatics&keyword=masters">Registration and purchase location here.</a> All of our practice locations use a scanning system called RecTrac — if you aren't registered in the system and haven't purchased the DPR Masters Swim Membership, DPR will not let you in. Once registered with DPR, select Memberships (Aquatics &amp; Fitness), then DPR Masters Swim Membership.
+                  Cost is prorated and visible during checkout. <a href="https://dcwashingtonweb.myvscloud.com/webtrac/web/login.html?LoginRedirect=search.html&LoginRedirectParam1=module&LoginRedirectValue1=AR&LoginRedirectParam2=PrimaryCode&LoginRedirectValue2=A1000">Registration and purchase location here.</a> All of our DPR practice locations use a scanning system called RecTrac — if you aren't registered in the system and haven't purchased the DPR Masters Swim Membership, DPR will not let you in. Once registered with DPR, select Memberships (Aquatics &amp; Fitness), then DPR Masters Swim Membership. A registration code is required to ensure only members of the organization are able to sign up. The code (case sensitive) is: <strong>DCAC2627!</strong>
                 </p>
               </Step>
             </Steps>
